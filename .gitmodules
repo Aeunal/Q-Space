@@ -1,0 +1,3 @@
+[submodule "tensor2tensor"]
+	path = tensor2tensor
+	url = https://github.com/tensorflow/tensor2tensor.git
