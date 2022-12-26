@@ -1,3 +1,6 @@
 [submodule "tensor2tensor"]
 	path = tensor2tensor
 	url = https://github.com/tensorflow/tensor2tensor.git
+[submodule "MinAtar"]
+	path = MinAtar
+	url = https://github.com/kenjyoung/MinAtar.git
