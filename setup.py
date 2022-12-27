@@ -11,7 +11,7 @@ setup(
     long_description="REINFORCE, A2C, and PPO implementations with auto-encoder feature extraction of the reinforcement learning environment observation",
     license="MIT",
     # Package info
-    packages=["q_space", ],
+    packages=["q_space", find_packages()],
     zip_safe=False,
 )
 
