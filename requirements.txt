@@ -11,3 +11,11 @@ ipywidgets
 cloudpickle
 scikit-image
 #scikit-learn
+keras-rl2
+Pillow
+h5py
+tensorflow==2.10.1
+tensorflow-gpu==2.10.1
+tensorflow-intel==2.10.1
+keras==2.10.1
+#tensorflow_addons 

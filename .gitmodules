@@ -4,3 +4,6 @@
 [submodule "MinAtar"]
 	path = MinAtar
 	url = https://github.com/kenjyoung/MinAtar.git
+[submodule "keras-rl2"]
+	path = keras-rl2
+	url = https://github.com/taylormcnally/keras-rl2.git
