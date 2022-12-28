@@ -99,12 +99,14 @@ class ProcessedWrapper(gym.Wrapper):
         self.LIVE = 5
         self.RANDOM_PREFIX = randomize_id()
         self.PNG_IDX = 0
-        
+        self.action_map = {0:1, 1:2, 2:3}
+
     def get_action_meanings(self):
         return ['NOOP & FIRE', 'LEFT', 'RIGHT']
 
     def step(self, action, show=False, save=False):
-        next_state, reward, done, info = self.env.step(action)
+        mapped_action = self.action_map[action]
+        next_state, reward, done, info = self.env.step(mapped_action)
         reward += 0.01
         current_live = info['ale.lives']
         if current_live < self.LIVE:
@@ -140,12 +142,12 @@ class ProcessedWrapper(gym.Wrapper):
 
 RANDOM_PREFIX = randomize_id()
 PNG_IDX = 0
-SEED = 42
 
-def explain_configure_env(env):
+def explain_configure_env(env, SEED=None):
     # mode=None, difficulty=None, obs_type='ram', frameskip=(2, 5), repeat_action_probability=0.0, full_action_space=False
-    env.seed(SEED)
-    env.action_space.seed(SEED)
+    if SEED:
+        env.seed(SEED)
+        env.action_space.seed(SEED)
     print(f"Env: {env.unwrapped.spec.id}")
     print(f"Obs: {env.observation_space}")
     print(f"Actions: {env.action_space} - {env.get_action_meanings()}")
@@ -157,9 +159,9 @@ def make_encoded_env(encoders, encode_shapes, environment_name='BreakoutNoFrames
     explain_configure_env(env)
     return env
     
-def make_processed_env(environment_name='BreakoutNoFrameskip-v4'):
+def make_processed_env(environment_name='BreakoutNoFrameskip-v4', seed=None):
     env = ProcessedWrapper(gym.make(environment_name)) 
-    explain_configure_env(env)
+    explain_configure_env(env, seed)
     return env
 
 def make_env(environment_name='BreakoutNoFrameskip-v4'):
